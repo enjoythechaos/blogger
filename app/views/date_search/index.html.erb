@@ -1,0 +1,13 @@
+<h1>All Dates</h1>
+
+<% @years_hash.each do |year, months| %>
+  <h2><%= year %></h2>
+  <% months.each do |month, has_articles| %>
+    <% if has_articles %>
+      <%= link_to "#{@month_names[month]}", date_search_path("#{year}-#{'%.2d' % month}") %>
+    <% else %>
+      <%= "#{@month_names[month]}" %>
+    <% end %>
+    <br/>
+  <% end %>
+<% end %>

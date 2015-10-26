@@ -1,0 +1,24 @@
+<h1>Most Popular Articles</h1>
+
+<ul id="articles">
+  <table>
+    <tr>
+      <td>
+        <li><B>Title</B></li>
+      </td>
+      <td>
+        <li><B>Views</B></li>
+      </td>
+    </tr>
+    <% @articles.each do |article| %>
+    <tr>
+      <td>
+        <li><%= link_to article.title, article_path(article) %></li>
+      </td>
+      <td>
+        <li><%= article.views %></li>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</ul>

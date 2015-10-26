@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  before_filter :require_login, only: [:new, :create, :edit, :update, :destroy]
+
   include ArticlesHelper
   def index
     @articles = Article.all
@@ -6,9 +8,12 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @article.increment_views
 
     @comment = Comment.new
-    @comment.article_id = @article_id
+    @comment.article_id = @article.id
+
+    @author = Author.find(@article.author_id)
   end
 
   def new
@@ -17,6 +22,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    @article.author_id = current_user.id
     @article.save
 
     flash.notice = "Article '#{@article.title}' successfully created!"

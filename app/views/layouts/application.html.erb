@@ -7,9 +7,26 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<p class="flash"><%= flash.notice %></p>
-<%= yield %>
-
+  <p class="flash">
+    <%= flash.notice %>
+  </p>
+  <div id="container">
+    <div id="sidebar">
+      <%= link_to "List of Articles", articles_path %><BR><BR>
+      <%= link_to "List of Tags", tags_path %><BR><BR>
+      <%= link_to "Articles by Date", date_search_index_path %><BR><BR>
+      <%= link_to "Most Popular", most_popular_index_path %><BR><BR>
+      <% if logged_in? %>
+        <%= "Logged in as #{current_user.username}" %><BR><BR>
+        <%= link_to "(logout)", logout_path %><BR><BR>
+      <% else %>
+        <%= link_to "Log In", login_path %><BR><BR>
+        <%= link_to "New Author", new_author_path %>
+      <% end %>
+    </div>
+    <div id="content">
+      <%= yield %>
+    </div>
+  </div>
 </body>
 </html>

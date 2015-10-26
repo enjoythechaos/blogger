@@ -22,15 +22,26 @@ a {
 }
 
 #container {
-  width: 75%;
+  position:relative;
+  width: 90%;
   margin: 0 auto;
   background: #fff;
-  padding: 20px 40px;
+  padding: 20px 20px;
   border: solid 1px black;
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 #content {
+  position:relative;
+  width: 75%;
+  left: 200px;
   clear: both;
-  padding-top: 20px;
+  top: 20px;
+  min-height: 350px;
+  margin-bottom: 20px;
+}
+
+#sidebar {
+  margin-top: 75px;
 }
